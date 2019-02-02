@@ -10,6 +10,9 @@ heroku login
 // Add requirements.txt file
 sudo pip3 freeze --local > requirements.txt
 
+// Add Procfile
+echo web: python app.py > Procfile
+
 // Initialise a Git repo
 git init
 
@@ -21,3 +24,12 @@ heroku git:remote -a milestone-4
 
 // Push to Heroku
 git push heroku master
+
+// Scale dynos
+heroku ps:scale web=1
+
+// Install Flask-PyMongo - similar to PyMongo but optimised to work with Flask
+sudo pip3 install flask_pymongo
+
+// Set MONGO_URI environment variable in a secure way
+export MONGO_URI=mongodb://james_admin:James_admin9@ds251827.mlab.com:51827/milestone_4
