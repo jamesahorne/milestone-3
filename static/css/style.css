@@ -1,0 +1,12 @@
+/*
+.input-field .top-label isn't working... Neither is btn-floating.
+*/
+.input-field .top-label {
+  position: absolute;
+  top: -26px;
+  font-size: 0.8rem; }
+
+.btn-floating {
+  top: 3px; }
+
+/*# sourceMappingURL=style.css.map */
