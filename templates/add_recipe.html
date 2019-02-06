@@ -1,0 +1,147 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<h3>
+    Add Recipe
+</h3>
+<div class="row">
+    <form class="col s12" action="{{ url_for('insert_recipe') }}" method="POST">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Recipe name" id="recipe_name" name="recipe_name" type="text" class="validate" data-length="50">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m4">
+                <input placeholder="Username" id="username" name="username" type="text" class="validate">
+            </div>
+
+            <!-- padding-top is different here to what it is for rows -->
+
+            <div class="input-field col s12 m4">
+                <select name="serves">
+                    <option value="1">Serves 1</option>
+                    <option value="2">Serves 2</option>
+                    <option value="3">Serves 3</option>
+                    <option value="4">Serves 4</option>
+                    <option value="5">Serves 5</option>
+                    <option value="6">Serves 6+</option>
+                </select>
+                <label>Portion size</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <select>
+                    <option value="1">Under 5 minutes</option>
+                    <option value="2">Under 10 minutes</option>
+                    <option value="3">Under 30 minutes</option>
+                    <option value="4">Over 30 minutes</option>
+                </select>
+                <label>Total time to prepare and cook</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea placeholder="Description of the recipe" id="recipe_description" class="materialize-textarea" data-length="200"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s9 m3">
+                <select multiple>
+                    {% for ingredient in ingredients %}
+                    
+<!--
+Is this the correct way to increment the value for each loop?
+
+How do I add a way for the user to include how much of the ingredient e.g. "20g" cheese
+
+If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code in   Adding A Task - Accepting User Input > Allow Task Category Selection
+-->
+                    
+                    <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Ingredients</label>
+            </div>
+            <div class="input-field col s3 m1">
+                <a href="#" class="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
+<!--
+.input-field .top-label isn't working... Neither is btn-floating.
+-->
+                <label class="top-label">Add ingredient</label>
+            </div>
+<!--
+            <div class="input-field col s12 m4">
+                <select>
+
+<!--
+Padding-top is different here to what it is for rows
+
+Ideally I want Main Ingredient to loop through the selected ingredients in the above list
+
+Not working??
+->
+
+                    {% for ingredient in ingredients %}
+                    <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Main ingredient</label>
+            </div>
+-->
+            <div class="input-field col s9 m3">
+                <select multiple>
+                    {% for allergen in allergens %}
+                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Allergens</label>
+            </div>
+            <div class="input-field col s3 m1">
+                <a href="#" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">add</i></a>
+<!--
+.input-field .top-label isn't working... Neither is btn-floating.
+-->
+                <label class="top-label">Add allergen</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea placeholder="Method" id="method" class="materialize-textarea" style="white-space: pre-wrap;">1. 
+2. 
+3. 
+4. </textarea>
+                <label>Method - please keep for the following format</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="switch">
+                <label>
+                    Vegetarian
+                </label><br>
+                <label>
+                    No
+                    <input type="checkbox" id="vegetarian" name="vegetarian">
+                    <span class="lever"></span>
+                    Yes
+                </label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}
