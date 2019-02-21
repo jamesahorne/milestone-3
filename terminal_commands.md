@@ -32,4 +32,4 @@ heroku ps:scale web=1
 sudo pip3 install flask_pymongo
 
 // Set MONGO_URI environment variable in a secure way
-export MONGO_URI=mongodb://james_admin:James_admin9@ds251827.mlab.com:51827/milestone_4
+export MONGO_URI=mongodb://#username#:#password#@ds251827.mlab.com:51827/milestone_4
