@@ -1,0 +1,170 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<h3>
+    Edit Recipe
+</h3>
+
+<div class="row">
+    <form class="col s12" action="{{ url_for('update_recipe', recipe_id=recipes._id) }}" method="POST">
+
+        <div class="row">
+            <div class="input-field col s12 m8">
+                <input value="{{recipes.recipe_name}}" placeholder="Recipe name" id="recipe_name" name="recipe_name" type="text" class="validate" data-length="50">
+            </div>
+            
+            <div class="input-field col s12 m4">
+                <input value="{{recipes.recipe_username}}" placeholder="Username" id="username" name="username" type="text" class="validate">
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="input-field col s12 m8">
+                <textarea placeholder="Description" id="recipe_description" class="materialize-textarea" data-length="200">{{recipes.recipe_description}}</textarea>
+            </div>
+        
+            <div class="file-field input-field s12 m4">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input id="recipe_image" name="recipe_image" class="file-path validate" type="text">
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="input-field col s12 m10">
+                <select>
+
+<!--
+Padding-top is different here to what it is for rows
+
+Ideally I want Main Ingredient to loop through the selected ingredients in the above list
+Using JQuery?
+-->
+
+                    {% for ingredient in ingredients %}
+                    <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Main ingredient</label>
+            </div>
+            
+            <div class="col s12 m2">
+                <div class="switch">
+                    <label>
+                        Vegetarian
+                    </label><br>
+                    <label>
+                        {% if recipe.vegetarian %}
+                            <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+                    {% else %}
+                            <input type="checkbox" id="vegetarian" name="vegetarian">
+                    {% endif%}
+                        <span class="lever"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+<!--
+Padding-top is different here to what it is for rows
+-->
+
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <select name="serves">
+                    {% for portion_size in portion_sizes %}
+                        {% if portion_size.serves == recipe.serves%}
+                        <option value="{{portion_size.serves}}" selected >{{portion_size.serves}}</option>
+                        {% else %}
+                        <option value="{{portion_size.serves}}">{{portion_size.serves}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>Portion size</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+                <select>
+                    <option value="1">0-5 minutes</option>
+                    <option value="2">5-10 minutes</option>
+                    <option value="3">10-30 minutes</option>
+                    <option value="4">30+ minutes</option>
+                </select>
+                <label>Total time to prepare and cook</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s9 m5">
+                <select multiple>
+                    {% for ingredient in ingredients %}
+                    
+<!--
+Is this the correct way to increment the value for each loop?
+
+How do I add a way for the user to include how much of the ingredient e.g. "20g" cheese
+
+If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code in   Adding A Task - Accepting User Input > Allow Task Category Selection
+-->
+                    
+                    <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Ingredients</label>
+            </div>
+            <div class="input-field col s3 m1">
+                <a href="{{ url_for('add_ingredient') }}" class="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
+<!--
+.input-field .top-label isn't working... Neither is btn-floating.
+-->
+                <label class="top-label">Add ingredient</label>
+            </div>
+
+            <div class="input-field col s9 m5">
+                <select multiple>
+                    {% for allergen in allergens %}
+                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Allergens</label>
+            </div>
+            <div class="input-field col s3 m1">
+                <a href="{{ url_for('add_allergen') }}" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">add</i></a>
+<!--
+.input-field .top-label isn't working... Neither is btn-floating.
+-->
+                <label class="top-label">Add allergen</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea placeholder="Method" id="method" class="materialize-textarea" style="white-space: pre-wrap;">1. 
+2. 
+3. 
+4. </textarea>
+                <label>Method - please keep for the following format</label>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}
