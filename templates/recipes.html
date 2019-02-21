@@ -8,19 +8,62 @@ search: search
 -->
 
 
+<!--
+Here is the filter section
+-->
+
+
 <ul class="collapsible popout" data-collapsible="expandable">
     {% for recipe in recipes %}
     <li>
         <div class="collapsible-header"><i class="material-icons">expand_more</i>
-            <h6>{{ recipe.recipe_name }}</h6>
+            <h4>{{ recipe.recipe_name }}</h4>
         </div>
         <div class="collapsible-body row"><span>
-            <strong>Main ingredient: {{ recipe.main_ingredient }}</strong><br>
-            {{ recipe.description }} <a href="#">See more</a>
+            <h6>Main Ingredient<h6/>
+            <p>{{ recipe.main_ingredient }}</p>
+            <h6>Description<h6/>
+            <p>{{ recipe.description }}</p>
+            <h6>Vegetarian<h6/>
+            <p>{{ recipe.vegetarian }}</p>
+            <p><a href="#">See full recipe</a></p>
+            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">Edit</a>
+            <a class="waves-effect waves-light btn">Delete</a>
         </span></div>
     </li>
     {% endfor %}
 </ul>
+
+
+<!--div class="row">
+    {% for recipe in recipes %}
+    <div class="col s12 m6 l4">
+        <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="static/img/turkey.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{ recipe.recipe_name }}</span>
+                <h6>Main Ingredient<h6/>
+                <p>{{ recipe.main_ingredient }}</p>
+                <h6>Description<h6/>
+                <p>{{ recipe.description }}</p>
+                <h6>Vegetarian<h6/>
+                <p>{{ recipe.vegetarian }}</p>
+                <p><a href="#">See full recipe</a></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div-->
+
+
+<!--
+Would ideally loop through a card with img.
+-->
 
 
 {% endblock %}
