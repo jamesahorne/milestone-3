@@ -14,41 +14,34 @@
             </div>
             
             <div class="input-field col s12 m4">
-                <input value="{{recipes.recipe_username}}" placeholder="Username" id="username" name="username" type="text" class="validate">
+                <input value="{{recipes.username}}" placeholder="Username" id="username" name="username" type="text" class="validate">
             </div>
         </div>
         
         
         <div class="row">
-            <div class="input-field col s12 m8">
-                <textarea placeholder="Description" id="recipe_description" class="materialize-textarea" data-length="200">{{recipes.recipe_description}}</textarea>
-            </div>
-        
-            <div class="file-field input-field s12 m4">
-                <div class="btn">
-                    <span>File</span>
-                    <input type="file">
-                </div>
-                <div class="file-path-wrapper">
-                    <input id="recipe_image" name="recipe_image" class="file-path validate" type="text">
-                </div>
+            <div class="input-field col s12">
+                <textarea placeholder="Description" id="description" name="description" class="materialize-textarea" data-length="200">{{recipes.description}}</textarea>
             </div>
         </div>
         
         
         <div class="row">
             <div class="input-field col s12 m10">
-                <select>
+                <select  name="main_ingredient">
 
 <!--
 Padding-top is different here to what it is for rows
 
-Ideally I want Main Ingredient to loop through the selected ingredients in the above list
-Using JQuery?
+How to have the recipes, ingredients and allergens alphabetically ordered in Mongo?
 -->
 
                     {% for ingredient in ingredients %}
-                    <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                        {% if ingredient.ingredient_name == recipes.ingredient_name %}
+                        <option value="{{ ingredient.ingredient_name }}" selected>{{ ingredient.ingredient_name }}</option>
+                        {% else %}
+                        <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label>Main ingredient</label>
@@ -60,11 +53,11 @@ Using JQuery?
                         Vegetarian
                     </label><br>
                     <label>
-                        {% if recipe.vegetarian %}
-                            <input type="checkbox" id="vegetarian" name="vegetarian" checked>
-                    {% else %}
-                            <input type="checkbox" id="vegetarian" name="vegetarian">
-                    {% endif%}
+                        {% if recipes.vegetarian %}
+                        <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+                        {% else %}
+                        <input type="checkbox" id="vegetarian" name="vegetarian">
+                        {% endif%}
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -80,7 +73,7 @@ Padding-top is different here to what it is for rows
             <div class="input-field col s12 m6">
                 <select name="serves">
                     {% for portion_size in portion_sizes %}
-                        {% if portion_size.serves == recipe.serves%}
+                        {% if portion_size.serves == recipes.serves %}
                         <option value="{{portion_size.serves}}" selected >{{portion_size.serves}}</option>
                         {% else %}
                         <option value="{{portion_size.serves}}">{{portion_size.serves}}</option>
@@ -91,11 +84,14 @@ Padding-top is different here to what it is for rows
             </div>
 
             <div class="input-field col s12 m6">
-                <select>
-                    <option value="1">0-5 minutes</option>
-                    <option value="2">5-10 minutes</option>
-                    <option value="3">10-30 minutes</option>
-                    <option value="4">30+ minutes</option>
+                <select name="time">
+                    {% for total_time in total_times %}
+                        {% if total_time.time == recipes.total_time %}
+                        <option value="{{total_time.time}}" selected >{{total_time.time}}</option>
+                        {% else %}
+                        <option value="{{total_time.time}}">{{total_time.time}}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
                 <label>Total time to prepare and cook</label>
             </div>
@@ -104,7 +100,7 @@ Padding-top is different here to what it is for rows
 
         <div class="row">
             <div class="input-field col s9 m5">
-                <select multiple>
+                <select name="ingredients" multiple>
                     {% for ingredient in ingredients %}
                     
 <!--
@@ -115,7 +111,11 @@ How do I add a way for the user to include how much of the ingredient e.g. "20g"
 If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code in   Adding A Task - Accepting User Input > Allow Task Category Selection
 -->
                     
-                    <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                        {% if ingredient.ingredient_name == recipes.ingredient_name %}
+                        <option value="{{ ingredient.ingredient_name }}" selected>{{ ingredient.ingredient_name }}</option>
+                        {% else %}
+                        <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label>Ingredients</label>
@@ -129,9 +129,13 @@ If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code
             </div>
 
             <div class="input-field col s9 m5">
-                <select multiple>
+                <select name="allergen" multiple>
                     {% for allergen in allergens %}
-                    <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                        {% if allergen.allergens == recipes.allergens %}
+                        <option value="{{ allergen.allergen_name }}" selected>{{ allergen.allergen_name }}</option>
+                        {% else %}
+                        <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label>Allergens</label>
