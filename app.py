@@ -6,7 +6,7 @@ from bson.json_util import dumps
 
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'milestone_4'
-app.config['MONGO_URI'] = 'mongodb://#username#:#password#@ds251827.mlab.com:51827/milestone_4'
+app.config['MONGO_URI'] = 'mongodb://#:#@ds251827.mlab.com:51827/milestone_4'
 
 
 # app.config['MONGO_URI'] = os.getenv('MONGO_URI')   #   ! ! !   FIX THIS   ! ! !
@@ -57,7 +57,20 @@ def add_allergen():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    #recipes.insert_one(request.form.to_dict())
+    
+    recipes.insert_one({
+        'recipe_name':request.form.get('recipe_name'),
+        'username':request.form.get('username'),
+        'description':request.form.get('description'),
+        'main_ingredient':request.form.get('main_ingredient'),
+        'vegetarian':request.form.get('vegetarian'),
+        'serves':request.form.get('serves'),
+        'total_time':request.form.get('total_time'),
+        'allergens':request.form.getlist('allergens'),
+        'ingredients':request.form.getlist('ingredients'),
+        'method':request.form.get('method')
+    })
     return redirect(url_for('recipes'))
 
 @app.route('/insert_ingredient', methods=['POST'])
@@ -95,9 +108,9 @@ def update_recipe(recipe_id):
         'vegetarian':request.form.get('vegetarian'),
         'serves':request.form.get('serves'),
         'total_time':request.form.get('total_time'),
-        'ingredient_name':request.form.get('ingredient_name'),
-        'allergens':request.form.get('allergens'),
-        'method':request.form.get('method'),
+        'allergens':request.form.getlist('allergens'),
+        'ingredients':request.form.getlist('ingredients'),
+        'method':request.form.get('method')
     })
     return redirect(url_for('recipes'))
 
