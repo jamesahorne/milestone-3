@@ -20,25 +20,15 @@
 
 
         <div class="row">
-            <div class="input-field col s12 m8">
-                <textarea placeholder="Description" id="recipe_description" class="materialize-textarea" data-length="200"></textarea>
-            </div>
-
-            <div class="file-field input-field s12 m4">
-                <div class="btn">
-                    <span>File</span>
-                    <input type="file">
-                </div>
-                <div class="file-path-wrapper">
-                    <input id="recipe_image" name="recipe_image" class="file-path validate" type="text">
-                </div>
+            <div class="input-field col s12">
+                <textarea placeholder="Description" id="description" name="description" class="materialize-textarea" data-length="200"></textarea>
             </div>
         </div>
 
 
         <div class="row">
             <div class="input-field col s12 m10">
-                <select>
+                <select name="main_ingredient">
 
 <!--
 Padding-top is different here to what it is for rows
@@ -85,7 +75,7 @@ Padding-top is different here to what it is for rows
             </div>
 
             <div class="input-field col s12 m6">
-                <select>
+                <select name="time">
                     {% for total_time in total_times %}
                     <option value="{{total_time.time}}">{{total_time.time}}</option>
                     {% endfor %}
@@ -97,7 +87,7 @@ Padding-top is different here to what it is for rows
 
         <div class="row">
             <div class="input-field col s9 m4">
-                <select multiple>
+                <select name="ingredients" multiple>
                     {% for ingredient in ingredients %}
                     
 <!--
@@ -122,7 +112,7 @@ If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code
             </div>
 
             <div class="input-field col s9 m4">
-                <select multiple>
+                <select name="allergen" multiple>
                     {% for allergen in allergens %}
                     <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
                     {% endfor %}
@@ -131,7 +121,8 @@ If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code
             </div>
             <div class="input-field col s3 m2">
                 <a href="{{ url_for('add_allergen') }}" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">add</i></a>
-                <!--
+
+<!--
 .input-field .top-label isn't working... Neither is btn-floating.
 -->
                 <label class="top-label">Add allergen</label>
@@ -141,7 +132,7 @@ If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code
 
         <div class="row">
             <div class="input-field col s12">
-                <textarea placeholder="Method" id="method" class="materialize-textarea" style="white-space: pre-wrap;">1. 
+                <textarea placeholder="Method" id="method" name="method" class="materialize-textarea" style="white-space: pre-wrap;">1. 
 2. 
 3. 
 4. </textarea>
