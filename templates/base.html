@@ -28,13 +28,13 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-                        <li><a href="{{ url_for('add_recipe') }}">Add Recipes</a></li>
+                        <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                         <li><a href="{{ url_for('data') }}">Data</a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-                        <li><a href="{{ url_for('add_recipe') }}">Add Recipes</a></li>
+                        <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                         <li><a href="{{ url_for('data') }}">Data</a></li>
                     </ul>
                 </div>
@@ -48,6 +48,20 @@
         {% block content %} {% endblock %}
 
     </div>
+    
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 center-align">
+                    <p>
+                        &copy; Subify 2019<br>
+                        Website made by <a href="https://github.com/jamesahorne" target="_blank">jamesahorne</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
