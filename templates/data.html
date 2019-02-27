@@ -1,9 +1,3 @@
-<!--
-materialize icon: data_usage
-graph-looking icon: equalizer, insert_chart, pie_chart, poll, show_chart
--->
-
-
 {% extends 'base.html' %} {% block content %}
 
 
@@ -13,29 +7,28 @@ graph-looking icon: equalizer, insert_chart, pie_chart, poll, show_chart
 
 <div class="row">
     <div class="row">
-        <div class="input-field col s12 m6 center-align">
-            <h4>Most popular recipes</h4>
-            <div id="most_popular"></div>
-        </div>
-
-
-        <div class="input-field col s12 m6 center-align">
-            <h4>Main ingredients</h4>
+        <div class="input-field col s12 m6">
+            <h4><i class="material-icons">pie_chart</i> Main ingredients</h4>
             <div id="main_ingredient"></div>
         </div>
     </div>
 
 
     <div class="row">
-        <div class="input-field col s12 m6 center-align">
-            <h4>Meat vs vegetarian recipes</h4>
+        <div class="input-field col s12 m6">
+            <h4><i class="material-icons">equalizer</i> Meat vs vegetarian recipes</h4>
             <div id="vegetarian"></div>
         </div>
 
 
-        <div class="input-field col s12 m6 center-align">
-            <h4>Total time until eating</h4>
-            <div id="total_time"></div>
+        <div class="input-field col s12 m6">
+            <h4><i class="material-icons">equalizer</i> Total time until eating</h4>
+            <div id="time"></div>
+        </div>
+
+
+        <div class="input-field col s12 m6">
+            <p>The stats for this page are live, based off our {{ recipe_count }} recipes.</p>
         </div>
     </div>
 
