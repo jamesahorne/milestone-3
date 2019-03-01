@@ -1,3 +1,20 @@
+.btn-floating {
+  top: 3px; }
+
+.index-h1 {
+  margin-top: 20vh; }
+
+.center .btn-large {
+  margin: auto;
+  color: #2962ff;
+  background-color: transparent;
+  border: 2px solid #2962ff;
+  width: 140px;
+  padding: 0; }
+
+.navbar-fixed {
+  z-index: 999; }
+
 /*
 .input-field .top-label isn't working... Neither is btn-floating.
 */
@@ -5,11 +22,5 @@
   position: absolute;
   top: -26px;
   font-size: 0.8rem; }
-
-.btn-floating {
-  top: 3px; }
-
-.navbar-fixed {
-  z-index: 999; }
 
 /*# sourceMappingURL=style.css.map */
