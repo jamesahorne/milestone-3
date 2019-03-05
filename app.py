@@ -5,11 +5,8 @@ from bson.objectid import ObjectId
 from bson.json_util import dumps
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'milestone_4'
-app.config['MONGO_URI'] = 'mongodb://#:#@ds251827.mlab.com:51827/milestone_4'
-
-
-# app.config['MONGO_URI'] = os.getenv('MONGO_URI')   #   ! ! !   FIX THIS   ! ! !
+app.config['MONGO_DBNAME'] = os.getenv('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 
 
 #        Variables        #
@@ -17,11 +14,11 @@ app.config['MONGO_URI'] = 'mongodb://#:#@ds251827.mlab.com:51827/milestone_4'
 
 mongo = PyMongo(app)
 recipes = mongo.db.recipes
-vegetarian = mongo.db.vegetarian.find(),
-ingredients = mongo.db.ingredients.find()
-portion_sizes = mongo.db.portion_sizes.find()
-total_times = mongo.db.total_times.find()
-allergens=mongo.db.allergens.find()
+vegetarian = mongo.db.vegetarian
+ingredients = mongo.db.ingredients
+portion_sizes = mongo.db.portion_sizes
+total_times = mongo.db.total_times
+allergens=mongo.db.allergens
 
 
 #        Home & recipes        #
@@ -34,8 +31,30 @@ def index():
 
 @app.route('/recipes')
 def get_recipes():
+    filter = {}
+    
+    main_ingredient_filter = request.args.get('main_ingredient', '')
+    if main_ingredient_filter:
+        filter["main_ingredient"] = main_ingredient_filter
+    
+    vegetarian_filter = request.args.get('vegetarian', '')
+    if vegetarian_filter:
+        filter["vegetarian"] = vegetarian_filter
+    
+    total_times_filter = request.args.get('total_times', '')
+    if total_times_filter:
+        filter["total_times"] = total_times_filter
+    
+    if filter:
+        recipes=mongo.db.recipes.find(filter)
+    else:
+        recipes=mongo.db.recipes.find()
+    
     return render_template('recipes.html', 
-                            recipes=recipes.find())
+                            recipes=recipes,
+                            vegetarian=vegetarian.find(),
+                            ingredients=ingredients.find(),
+                            total_times=total_times.find())
 
 
 @app.route('/full_recipe/<recipe_id>')
@@ -51,10 +70,10 @@ def full_recipe(recipe_id):
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('add_recipe.html',
-                            vegetarian=vegetarian,
+                            vegetarian=vegetarian.find(),
                             ingredients=list(ingredients.find()),
-                            portion_sizes=portion_sizes,
-                            total_times=total_times,
+                            portion_sizes=portion_sizes.find(),
+                            total_times=total_times.find(),
                             allergens=allergens.find())
 
 
@@ -72,7 +91,7 @@ def insert_recipe():
         'ingredients':request.form.getlist('ingredients'),
         'method':request.form.get('method')
     })
-    return redirect(url_for('recipes'))
+    return redirect(url_for('get_recipes'))
 
 
 @app.route('/add_ingredient')
@@ -105,10 +124,10 @@ def edit_recipe(recipe_id):
     the_recipe =  recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('edit_recipe.html',
                             recipes=the_recipe,
-                            vegetarian=vegetarian,
+                            vegetarian=vegetarian.find(),
                             ingredients=list(ingredients.find()),
-                            portion_sizes=portion_sizes, 
-                            total_times=total_times,
+                            portion_sizes=portion_sizes.find(), 
+                            total_times=total_times.find(),
                             allergens=allergens.find())
 
 
@@ -127,13 +146,13 @@ def update_recipe(recipe_id):
         'ingredients':request.form.getlist('ingredients'),
         'method':request.form.get('method')
     })
-    return redirect(url_for('recipes'))
+    return redirect(url_for('get_recipes'))
 
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('recipes'))
+    return redirect(url_for('get_recipes'))
 
 
 #        Data        #
