@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="index-vp">
+    <div class="row index-btn">
+        <div class="col s12 center btn-margin">
+            <a class="btn-large" href="{{ url_for('get_recipes') }}">Need ideas</a>
+        </div>
+        <div class="col s12 center">
+            <a class="btn-large" href="{{ url_for('add_recipe') }}">Share ideas</a>
+        </div>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col s12 center-align">
+            <h6>
+                Make sandwiches fun again!
+            </h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col s12">
+        <h6>
+            How does it work?
+        </h6>
+
+        <p>
+            Feeling stuck with the same, boring sandwiches that you've had every day for the last <em>who knows how many</em> years?
+        </p>
+        <p>
+            <strong>There's no need!</strong>
+        </p>
+        <p>
+            Look forward to lunchtime, and use these recipes to make sandwiches fun again.
+        </p>
+        <p>
+            And, if you've already seen the light, share your favourite sandwiches with others!
+        </p>
+    </div>
+</div>
+
+
+{% endblock %}
