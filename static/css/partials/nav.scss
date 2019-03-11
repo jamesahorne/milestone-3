@@ -1,3 +1,27 @@
 .navbar-fixed {
     z-index: 999;
 }
+
+nav {
+    background-color: #fff;
+    border-bottom: $primary-color solid 2px;
+    box-shadow: none;
+    
+    .brand-logo {
+        color: $primary-color;
+    }
+    
+    a {
+        color: $primary-color;
+    }
+}
+
+.side-nav li>a {
+    color: $primary-color-fade;
+    
+    i.material-icons {
+        color: $primary-color-fade;
+    }
+}
+
+
