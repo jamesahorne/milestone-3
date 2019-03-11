@@ -29,6 +29,17 @@ MongoDB data objects are stored as separate documents inside a collection. The c
 * total_times
 * vegetarian
 
+## Features
+### Existing Features
+* Recipe filters – allow users to search for specific types of recipes (e.g. vegetarian recipes) by selecting one or more of the filters in the filter form.
+* Reset button – allows users to reset the filter form if they don’t wish to search using a filter by clicking the Reset button.
+* Add recipe – allows users to add a recipe by filling out the form on the Add Recipe page.
+* Add ingredient – allows users to add an ingredient by filling out the form on the Add Ingredient page.
+* Add allergen – allows users to add an allergen by filling out the form on the Add Allergen page.
+* Edit recipe – allows users to edit a recipe by clicking the Edit button on the full recipe page of a recipe and then updating the form on the Edit Recipe page.
+* Delete recipe – allows users to delete a recipe by clicking the Delete button on the full recipe page of a recipe.
+* Data filter – allows users to filter the data on the data page by clicking on a piece of data in one of the data charts, for example clicking on the Yes bar in the Vegetarian vs Meat bar chart to on see the data for vegetarian recipes.
+
 
 ## Testing
 ### Manual Testing
