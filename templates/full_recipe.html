@@ -1,47 +1,50 @@
-<!--
-edit icon: edit
-calendar icon: today
-delete icon: delete
-add icon: add
-when confirming an edit: done
-username icon: person
-upvotes: thumb_up, plus_one
-total time: timer
--->
-
 {% extends 'base.html' %} {% block content %}
 
 
+<h1 class="header">
+    {{ recipe.recipe_name }}
+</h1>
+<p class="username">by {{ recipe.username }}</p>
+
+
 <div class="row">
     <div class="col s12">
-        <h1>
-            {{ recipe.recipe_name }}
-        </h1>
-    </div>
-    <div class="col s12">
-        <h6>
-<!--
-Should I use h6 or p?
--->
-            {{ recipe.username }}
-        </h6>
+        <p>{{ recipe.description }}</p>
+        <h6>Main Ingredient</h6>
+        <p>{{ recipe.main_ingredient }}</p>
+        <h6>Vegetarian</h6>
+        <p>{{ recipe.vegetarian }}</p>
+        <h6>Ingredients</h6>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+            <li>{{ingredient}}{{ "," if not loop.last }}</li>
+            {% endfor %}
+        </ul>
+        <h6>Portion Size</h6>
+        <p>{{ recipe.serves }}</p>
+        <h6>Total time</h6>
+        <p>{{ recipe.time }}</p>
+        <h6>Allergens</h6>
+        <ul>
+            {% for allergen in recipe.allergens %}
+                {% if allergen is defined %}
+                    <li>{{allergen}}{{ "," if not loop.last }}</li>
+                {% else %}
+                    <li>No allergens</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <h6>Method</h6>
+        <pre>{{ recipe.method }}</pre>
     </div>
 </div>
 
-<div class="row">
-    .
-</div>
 
-<div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large red">
-        <i class="large material-icons">mode_edit</i>
-    </a>
-    <ul>
-        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-    </ul>
+<div class="row">
+    <div class="col s12">
+        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">Edit</a>
+        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">Delete</a>
+    </div>
 </div>
 
 
