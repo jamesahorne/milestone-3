@@ -1,43 +1,42 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<h3>
+<h1>
     Edit Recipe
-</h3>
+</h1>
+
 
 <div class="row">
     <form class="col s12" action="{{ url_for('update_recipe', recipe_id=recipes._id) }}" method="POST">
 
         <div class="row">
             <div class="input-field col s12 m8">
-                <input value="{{recipes.recipe_name}}" placeholder="Recipe name" id="recipe_name" name="recipe_name" type="text" class="validate" data-length="50">
+                <input value="{{ recipes.recipe_name }}" placeholder="Recipe name" id="recipe_name" name="recipe_name" type="text" class="validate" data-length="50">
             </div>
-            
+
             <div class="input-field col s12 m4">
-                <input value="{{recipes.username}}" placeholder="Username" id="username" name="username" type="text" class="validate">
+                <input value="{{ recipes.username }}" placeholder="Username" id="username" name="username" type="text" class="validate">
             </div>
         </div>
-        
-        
+
+
         <div class="row">
             <div class="input-field col s12">
-                <textarea placeholder="Description" id="description" name="description" class="materialize-textarea" data-length="200">{{recipes.description}}</textarea>
+                <textarea placeholder="Description" id="description" name="description" class="materialize-textarea" data-length="200">{{ recipes.description }}</textarea>
             </div>
         </div>
-        
-        
+
+
         <div class="row">
             <div class="input-field col s12 m10">
-                <select  name="main_ingredient">
+                <select name="main_ingredient" required>
 
 <!--
 Padding-top is different here to what it is for rows
-
-How to have the recipes, ingredients and allergens alphabetically ordered in Mongo?
 -->
 
                     {% for ingredient in ingredients %}
-                        {% if ingredient.ingredient_name == recipes.ingredient_name %}
+                        {% if ingredient.ingredient_name == recipes.main_ingredient %}
                         <option value="{{ ingredient.ingredient_name }}" selected>{{ ingredient.ingredient_name }}</option>
                         {% else %}
                         <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
@@ -46,37 +45,34 @@ How to have the recipes, ingredients and allergens alphabetically ordered in Mon
                 </select>
                 <label>Main ingredient</label>
             </div>
-            
-            <div class="col s12 m2">
-                <div class="switch">
-                    <label>
-                        Vegetarian
-                    </label><br>
-                    <label>
-                        {% if recipes.vegetarian %}
-                        <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+
+            <div class="input-field col s12 m10">
+                <select name="vegetarian" required>
+                    {% for veggie in vegetarian %}
+                        {% if veggie.vegetarian == recipes.vegetarian %}
+                        <option value="{{ veggie.vegetarian }}" selected>{{ veggie.vegetarian }}</option>
                         {% else %}
-                        <input type="checkbox" id="vegetarian" name="vegetarian">
-                        {% endif%}
-                        <span class="lever"></span>
-                    </label>
-                </div>
+                        <option value="{{ veggie.vegetarian }}">{{ veggie.vegetarian }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>Vegetarian</label>
             </div>
         </div>
 
-<!--
+        <!--
 Padding-top is different here to what it is for rows
 -->
 
 
         <div class="row">
             <div class="input-field col s12 m6">
-                <select name="serves">
+                <select name="serves" required>
                     {% for portion_size in portion_sizes %}
                         {% if portion_size.serves == recipes.serves %}
-                        <option value="{{portion_size.serves}}" selected >{{portion_size.serves}}</option>
+                        <option value="{{ portion_size.serves }}" selected >{{ portion_size.serves }}</option>
                         {% else %}
-                        <option value="{{portion_size.serves}}">{{portion_size.serves}}</option>
+                        <option value="{{ portion_size.serves }}">{{ portion_size.serves }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
@@ -84,12 +80,12 @@ Padding-top is different here to what it is for rows
             </div>
 
             <div class="input-field col s12 m6">
-                <select name="time">
+                <select name="time" required>
                     {% for total_time in total_times %}
-                        {% if total_time.time == recipes.total_time %}
-                        <option value="{{total_time.time}}" selected >{{total_time.time}}</option>
+                        {% if total_time.time == recipes.time %}
+                        <option value="{{ total_time.time }}" selected >{{ total_time.time }}</option>
                         {% else %}
-                        <option value="{{total_time.time}}">{{total_time.time}}</option>
+                        <option value="{{ total_time.time }}">{{ total_time.time }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
@@ -99,50 +95,38 @@ Padding-top is different here to what it is for rows
 
 
         <div class="row">
-            <div class="input-field col s9 m5">
+            <div class="input-field col s9 m4">
                 <select name="ingredients" multiple>
                     {% for ingredient in ingredients %}
                     
 <!--
 Is this the correct way to increment the value for each loop?
-
-How do I add a way for the user to include how much of the ingredient e.g. "20g" cheese
-
-If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code in   Adding A Task - Accepting User Input > Allow Task Category Selection
 -->
                     
-                        {% if ingredient.ingredient_name == recipes.ingredient_name %}
-                        <option value="{{ ingredient.ingredient_name }}" selected>{{ ingredient.ingredient_name }}</option>
-                        {% else %}
-                        <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
-                        {% endif %}
+                        <option value="{{ ingredient.ingredient_name }}" {% if ingredient.ingredient_name in recipes.ingredients %}selected{% endif %}>{{ ingredient.ingredient_name }}</option>
                     {% endfor %}
                 </select>
                 <label>Ingredients</label>
             </div>
-            <div class="input-field col s3 m1">
+            <div class="input-field col s3 m2">
                 <a href="{{ url_for('add_ingredient') }}" class="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
-<!--
+                <!--
 .input-field .top-label isn't working... Neither is btn-floating.
 -->
                 <label class="top-label">Add ingredient</label>
             </div>
 
-            <div class="input-field col s9 m5">
-                <select name="allergen" multiple>
+            <div class="input-field col s9 m4">
+                <select name="allergens" multiple>
                     {% for allergen in allergens %}
-                        {% if allergen.allergens == recipes.allergens %}
-                        <option value="{{ allergen.allergen_name }}" selected>{{ allergen.allergen_name }}</option>
-                        {% else %}
-                        <option value="{{ allergen.allergen_name }}">{{ allergen.allergen_name }}</option>
-                        {% endif %}
+                        <option value="{{ allergen.allergen_name }}" {% if allergen.allergen_name in recipes.allergens %}selected{% endif %}>{{ allergen.allergen_name }}</option>
                     {% endfor %}
                 </select>
                 <label>Allergens</label>
             </div>
-            <div class="input-field col s3 m1">
+            <div class="input-field col s3 m2">
                 <a href="{{ url_for('add_allergen') }}" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">add</i></a>
-<!--
+                <!--
 .input-field .top-label isn't working... Neither is btn-floating.
 -->
                 <label class="top-label">Add allergen</label>
@@ -152,15 +136,12 @@ If the   value="{{ ingredient.ingredient_name }}"   doesn't work, check out code
 
         <div class="row">
             <div class="input-field col s12">
-                <textarea placeholder="Method" id="method" class="materialize-textarea" style="white-space: pre-wrap;">1. 
-2. 
-3. 
-4. </textarea>
-                <label>Method - please keep for the following format</label>
+                <textarea placeholder="Method" id="method" name="method" class="materialize-textarea" style="white-space: pre-wrap;">{{ recipes.method }}</textarea>
+                <label>Method (please include ingredient quanitities)</label>
             </div>
         </div>
-        
-        
+
+
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
