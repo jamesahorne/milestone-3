@@ -1,17 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<h3>
+<h1>
     Add Allergen
-</h3>
+</h1>
+
+
 <div class="row">
     <form class="col s12" action="{{ url_for('insert_allergen') }}" method="POST">
-
 <div class="row">
             <div class="input-field col s12">
                 <input placeholder="Allergen name" id="allergen_name" name="allergen_name" type="text" class="validate" data-length="20">
             </div>
         </div>
+        
         
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit">Submit

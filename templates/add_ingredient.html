@@ -1,17 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<h3>
+<h1>
     Add Ingredient
-</h3>
+</h1>
+
+
 <div class="row">
     <form class="col s12" action="{{ url_for('insert_ingredient') }}" method="POST">
-
         <div class="row">
             <div class="input-field col s12">
                 <input placeholder="Ingredient name" id="ingredient_name" name="ingredient_name" type="text" class="validate" data-length="20">
             </div>
         </div>
+        
         
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit">Submit
