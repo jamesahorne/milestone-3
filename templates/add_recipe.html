@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<h3>
+<h1>
     Add Recipe
-</h3>
+</h1>
+
 
 <div class="row">
     <form class="col s12" action="{{ url_for('insert_recipe') }}" method="POST">
-
         <div class="row">
             <div class="input-field col s12 m8">
                 <input placeholder="Recipe name" id="recipe_name" name="recipe_name" type="text" class="validate" data-length="50">
@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="input-field col s12 m10">
-                <select name="main_ingredient">
+                <select name="main_ingredient" required>
 
 <!--
 Padding-top is different here to what it is for rows
@@ -41,18 +41,13 @@ Padding-top is different here to what it is for rows
                 <label>Main ingredient</label>
             </div>
 
-            <div class="col s12 m2">
-                <div class="switch">
-                    <label>
-                        Vegetarian
-                    </label><br>
-                    <label>
-                        No
-                        <input type="checkbox" id="vegetarian" name="vegetarian" value="Yes">
-                        <span class="lever"></span>
-                        Yes
-                    </label>
-                </div>
+            <div class="input-field col s12 m10">
+                <select name="vegetarian" required>
+                    {% for veggie in vegetarian %}
+                    <option value="{{ veggie.vegetarian }}">{{ veggie.vegetarian }}</option>
+                    {% endfor %}
+                </select>
+                <label>Vegetarian</label>
             </div>
         </div>
 
@@ -63,7 +58,7 @@ Padding-top is different here to what it is for rows
 
         <div class="row">
             <div class="input-field col s12 m6">
-                <select name="serves">
+                <select name="serves" required>
                     {% for portion_size in portion_sizes %}
                     <option value="{{portion_size.serves}}">{{portion_size.serves}}</option>
                     {% endfor %}
@@ -72,7 +67,7 @@ Padding-top is different here to what it is for rows
             </div>
 
             <div class="input-field col s12 m6">
-                <select name="time">
+                <select name="time" required>
                     {% for total_time in total_times %}
                     <option value="{{total_time.time}}">{{total_time.time}}</option>
                     {% endfor %}
