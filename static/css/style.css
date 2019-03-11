@@ -15,6 +15,20 @@ btn-floating isn't working?
 .navbar-fixed {
   z-index: 999; }
 
+nav {
+  background-color: #fff;
+  border-bottom: #2962ff solid 2px;
+  box-shadow: none; }
+  nav .brand-logo {
+    color: #2962ff; }
+  nav a {
+    color: #2962ff; }
+
+.side-nav li > a {
+  color: rgba(41, 98, 255, 0.87); }
+  .side-nav li > a i.material-icons {
+    color: rgba(41, 98, 255, 0.87); }
+
 /*        General        */
 h1,
 h2,
