@@ -12,6 +12,23 @@ Subify is a sandwich fillings recipe site, giving users the ability to read reci
 * As a user wanting to view recipes, on the home page I click on the Need Ideas button, which takes me to the Recipes page where I can view all the recipes in the database.
 * As a user wanting to filter recipes, on the Recipes page I click on the Filter recipes button, which reveals a hidden form with categories that you can use to filter (e.g. if the recipe is vegetarian).
 
+## Mock Ups
+I created mock ups for small, medium and large screens, which are in the ‘mockups’ directory in this project (
+# # # https://github.com/jamesahorne/milestone-4/tree/master/mockups
+).
+* I altered the website’s design slightly from the mock ups, partly because I later decided against displaying a picture of what the recipe should look like (I didn’t think this would benefit the user in making the filling). As a result of this I used an accordion to display the recipes, rather than cards.
+* I also decided not to use a search field to filter recipes (I thought filtering by main ingredient, if it’s vegetarian or not and by how long it takes was sufficient).
+* In the Data page I swapped a Most Popular Recipes list for a pie chart displaying which allergens contained, and used a pie chart for Main Ingredient, a bar chart for Meat vs Vegetarian and a row chart for Total Time.
+
+## Database Schema Design
+MongoDB data objects are stored as separate documents inside a collection. The collections used are:
+* allergens
+* ingredients
+* portion_sizes
+* recipes
+* total_times
+* vegetarian
+
 
 ## Testing
 ### Manual Testing

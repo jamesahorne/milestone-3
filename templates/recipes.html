@@ -1,69 +1,85 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<!--
-filter icon: filter_list, sort? Do I need an icon?
-for pagination: first_page, last_page
-search: search
--->
+
+<h1>
+    Recipes
+</h1>
 
 
-<!--
-Here is the filter section
--->
+<button class="waves-effect waves-light btn" onclick="filtersToggle()">Filter recipes</button>
+
+
+<div class="row" id="filters">
+    <div class="col s12">
+        <form action="{{ url_for('get_recipes') }}" method="GET" id="filterForm">
+            
+            <div class="row">
+                <div class="input-field col s12 m4">
+                    <select name="main_ingredient">
+                        <option value="">Please select one</option>
+                        {% for ingredient in ingredients %}
+                        <option value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Main ingredient</label>
+                </div>
+
+
+                <div class="input-field col s12 m4">
+                    <select name="vegetarian">
+                        <option value="">Please select one</option>
+                        {% for veggie in vegetarian %}
+                        <option value="{{ veggie.vegetarian }}">{{ veggie.vegetarian }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Vegetarian</label>
+                </div>
+
+
+                <div class="input-field col s12 m4">
+                    <select name="time">
+                        <option value="">Please select one</option>
+                        {% for total_time in total_times %}
+                        <option value="{{total_time.time}}">{{total_time.time}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Total time to prepare and cook</label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button class="waves-effect waves-light btn" type="submit">Filter</button>
+
+                    <input class="waves-effect waves-light btn" type="reset" value="Reset">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 
 <ul class="collapsible popout" data-collapsible="expandable">
     {% for recipe in recipes %}
     <li>
         <div class="collapsible-header"><i class="material-icons">expand_more</i>
-            <h4>{{ recipe.recipe_name }}</h4>
+            <h6>{{ recipe.recipe_name }}</h6>
         </div>
         <div class="collapsible-body row"><span>
-            <h6>Main Ingredient<h6/>
-            <p>{{ recipe.main_ingredient }}</p>
-            <h6>Description<h6/>
+            <h6>Description</h6>
             <p>{{ recipe.description }}</p>
-            <h6>Vegetarian<h6/>
+            <h6>Main Ingredient</h6>
+            <p>{{ recipe.main_ingredient }}</p>
+            <h6>Vegetarian</h6>
             <p>{{ recipe.vegetarian }}</p>
-            <p><a href="#">See full recipe</a></p>
-            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">Edit</a>
-            <a class="waves-effect waves-light btn">Delete</a>
+            <p><a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}">See full recipe</a></p>
         </span></div>
     </li>
     {% endfor %}
 </ul>
-
-
-<!--div class="row">
-    {% for recipe in recipes %}
-    <div class="col s12 m6 l4">
-        <div class="card small">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="static/img/turkey.jpg">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="material-icons right">more_vert</i></span>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{ recipe.recipe_name }}</span>
-                <h6>Main Ingredient<h6/>
-                <p>{{ recipe.main_ingredient }}</p>
-                <h6>Description<h6/>
-                <p>{{ recipe.description }}</p>
-                <h6>Vegetarian<h6/>
-                <p>{{ recipe.vegetarian }}</p>
-                <p><a href="#">See full recipe</a></p>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div-->
-
-
-<!--
-Would ideally loop through a card with img.
--->
 
 
 {% endblock %}
