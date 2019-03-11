@@ -41,9 +41,9 @@ def get_recipes():
     if vegetarian_filter:
         filter["vegetarian"] = vegetarian_filter
     
-    total_times_filter = request.args.get('total_times', '')
+    total_times_filter = request.args.get('time', '')
     if total_times_filter:
-        filter["total_times"] = total_times_filter
+        filter["time"] = total_times_filter
     
     if filter:
         recipes=mongo.db.recipes.find(filter)
