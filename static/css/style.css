@@ -1,6 +1,4 @@
-/*
-$color-fade is $color with 0.8 opacity
-*/
+/*        Buttons        */
 .btn-floating {
   top: 3px; }
 
@@ -23,7 +21,8 @@ $color-fade is $color with 0.8 opacity
 .btn-floating:active,
 .btn-floating:focus-within,
 .btn-floating:visited {
-  background-color: #ff4081; }
+  background-color: #ff4081;
+  text-transform: none; }
 
 .btn:focus,
 .btn:hover,
@@ -34,6 +33,7 @@ $color-fade is $color with 0.8 opacity
 .filter-btn {
   margin-bottom: 20px; }
 
+/*        Footer        */
 footer {
   border: #2962ff solid 2px;
   position: relative;
@@ -43,6 +43,7 @@ footer {
   footer .row {
     margin-bottom: 0; }
 
+/*        Nav        */
 .navbar-fixed {
   z-index: 999; }
 
