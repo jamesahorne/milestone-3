@@ -1,3 +1,5 @@
+/*        Buttons        */
+
 .btn-floating {
     top: 3px;
 }
@@ -23,6 +25,7 @@
 .btn-floating:focus-within,
 .btn-floating:visited, {
     background-color: $secondary-color;
+    text-transform: none;
 }
 
 .btn:focus,
