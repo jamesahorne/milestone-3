@@ -17,13 +17,23 @@ a {
     color: $primary-color;
 }
 
+pre {
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+section {
+    min-height: 100%;
+    margin-bottom: -80px !important;
+}
+
 
 
 /*
 .input-field .top-label isn't working.
 */
-
-
 
 .input-field .top-label {
     position: absolute;
@@ -33,7 +43,6 @@ a {
 
 
 /*        Index        */
-
 
 .index-btn {
     margin-top: 20vh;
@@ -52,14 +61,12 @@ a {
 
 /*        Recipes        */
 
-
 #filters {
     display: none;
 }
 
 
 /*        Full recipe        */
-
 
 .header {
     margin-bottom: 0;
