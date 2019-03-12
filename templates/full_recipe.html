@@ -14,13 +14,7 @@
         <p>{{ recipe.main_ingredient }}</p>
         <h6>Vegetarian</h6>
         <p>{{ recipe.vegetarian }}</p>
-        <h6>Ingredients</h6>
-        <ul>
-            {% for ingredient in recipe.ingredients %}
-            <li>{{ingredient}}{{ "," if not loop.last }}</li>
-            {% endfor %}
-        </ul>
-        <h6>Portion Size</h6>
+        <h6>Serves</h6>
         <p>{{ recipe.serves }}</p>
         <h6>Total time</h6>
         <p>{{ recipe.time }}</p>
@@ -32,6 +26,12 @@
                 {% else %}
                     <li>No allergens</li>
                 {% endif %}
+            {% endfor %}
+        </ul>
+        <h6>Ingredients</h6>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+            <li>{{ingredient}}{{ "," if not loop.last }}</li>
             {% endfor %}
         </ul>
         <h6>Method</h6>
