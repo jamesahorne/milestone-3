@@ -1,20 +1,33 @@
-
-
-
-/*
-btn-floating isn't working?
-*/
-
-
 .btn-floating {
     top: 3px;
 }
 
-.center .btn-large {
+.center .btn-large,
+.center .btn-large:active,
+.center .btn-large:focus,
+.center .btn-large:visited {
     margin: auto;
     color: $primary-color;
     background-color: transparent;
     border: 2px solid $primary-color;
     width: 140px;
     padding: 0;
+}
+
+.btn,
+.btn:active,
+.btn:focus-within,
+.btn:visited,
+.btn-floating,
+.btn-floating:active,
+.btn-floating:focus-within,
+.btn-floating:visited, {
+    background-color: $secondary-color;
+}
+
+.btn:focus,
+.btn:hover,
+.btn-floating:focus,
+.btn-floating:hover {
+    background-color: $secondary-color-fade;
 }
