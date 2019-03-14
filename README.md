@@ -14,7 +14,7 @@ This project is for Milestone 3 of Code Institutes Full Stack Development Diplom
 * As a user wanting to filter recipes, on the Recipes page I click on the Filter recipes button, which reveals a hidden form with categories that you can use to filter (e.g. if the recipe is vegetarian).
 
 ## Mock Ups
-I created mock ups for small, medium and large screens, which are in the ['mockups' directory](https://github.com/jamesahorne/milestone_4/blob/master/mockups/milestone_4_mockup.pdf) in this project.
+I created mock ups for small, medium and large screens, which are in the ['mockups' directory](https://github.com/jamesahorne/milestone_3/blob/master/mockups/milestone_3_mockup.pdf) in this project.
 * I altered the website’s design slightly from the mock ups, partly because I later decided against displaying a picture of what the recipe should look like (I didn’t think this would benefit the user in making the filling). As a result of this I used an accordion to display the recipes, rather than cards.
 * I also decided not to use a search field to filter recipes (I thought filtering by main ingredient, if it’s vegetarian or not and by how long it takes was sufficient).
 * In the Data page I swapped a Most Popular Recipes list for a pie chart displaying which allergens contained, and used a pie chart for Main Ingredient, a bar chart for Meat vs Vegetarian and a row chart for Total Time.
