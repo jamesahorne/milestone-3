@@ -13,9 +13,7 @@ Subify is a sandwich fillings recipe site, giving users the ability to read reci
 * As a user wanting to filter recipes, on the Recipes page I click on the Filter recipes button, which reveals a hidden form with categories that you can use to filter (e.g. if the recipe is vegetarian).
 
 ## Mock Ups
-I created mock ups for small, medium and large screens, which are in the ‘mockups’ directory in this project (
-# # # https://github.com/jamesahorne/milestone-4/tree/master/mockups
-).
+I created mock ups for small, medium and large screens, which are in the ['mockups' directory](https://github.com/jamesahorne/milestone_4/blob/master/mockups/milestone_4_mockup.pdf) in this project.
 * I altered the website’s design slightly from the mock ups, partly because I later decided against displaying a picture of what the recipe should look like (I didn’t think this would benefit the user in making the filling). As a result of this I used an accordion to display the recipes, rather than cards.
 * I also decided not to use a search field to filter recipes (I thought filtering by main ingredient, if it’s vegetarian or not and by how long it takes was sufficient).
 * In the Data page I swapped a Most Popular Recipes list for a pie chart displaying which allergens contained, and used a pie chart for Main Ingredient, a bar chart for Meat vs Vegetarian and a row chart for Total Time.
@@ -99,6 +97,11 @@ I decided it wasn’t necessary to automate any tests, so conducted manual tests
         1. The recipes filter down to the recipes the meet the filter criteria
     v. Or the Reset button 
         1. The filter recipes form resets to default values
+
+### Browser Testing
+In addition to the above manual tests, I have tested this on various browsers and devices to make sure that the website is compatible on them. The website looks and functions the same on all browsers and devices except the issues below on Microsoft Edge, both of which I haven’t yet addressed, which were:
+* The buttons, which should be pink, are blue.
+* The Reset button in the filter recipes section, which only uses HTML (as no JavaScript is needed when type=reset), doesn’t work.
 
 
 ## Credits
