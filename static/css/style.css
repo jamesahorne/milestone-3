@@ -12,6 +12,13 @@
   border: 2px solid #2962ff;
   width: 140px;
   padding: 0; }
+  @media only screen and (min-width: 768px) {
+    .center .btn-large,
+    .center .btn-large:active,
+    .center .btn-large:focus,
+    .center .btn-large:visited {
+      width: 165px;
+      font-size: 1.5rem; } }
 
 .btn,
 .btn:active,
@@ -35,11 +42,10 @@
 
 /*        Footer        */
 footer {
-  border: #2962ff solid 2px;
+  border-top: #2962ff solid 2px;
+  clear: both;
   position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 80px; }
+  width: 100%; }
   footer .row {
     margin-bottom: 0; }
 
@@ -50,10 +56,23 @@ footer {
 nav {
   background-color: #fff;
   border-bottom: #2962ff solid 2px;
-  box-shadow: none; }
+  box-shadow: none;
+  height: 8vh; }
+  @media only screen and (min-width: 768px) {
+    nav {
+      height: 6vh; } }
+  @media only screen and (min-width: 992px) {
+    nav {
+      height: 5vh;
+      padding-left: 20px; } }
+  @media only screen and (min-width: 1200px) {
+    nav {
+      height: 8vh; } }
   nav .brand-logo {
     color: #2962ff; }
   nav a {
+    color: #2962ff; }
+  nav ul a {
     color: #2962ff; }
 
 .side-nav li > a {
@@ -62,6 +81,9 @@ nav {
     color: #4576ff; }
 
 /*        General        */
+body {
+  min-height: 100%; }
+
 h1,
 h2,
 h3,
@@ -80,11 +102,24 @@ pre {
   line-height: 1.5;
   font-family: "Roboto", sans-serif;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.87); }
+  color: rgba(0, 0, 0, 0.87);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word; }
 
-section {
-  min-height: 100%;
-  margin-bottom: -80px !important; }
+.section {
+  min-height: 80.8vh; }
+  @media only screen and (min-width: 768px) {
+    .section {
+      min-height: 86.6vh; } }
+  @media only screen and (min-width: 992px) {
+    .section {
+      min-height: 89.6vh; } }
+  @media only screen and (min-width: 1200px) {
+    .section {
+      min-height: 80.8vh; } }
 
 /*
 .input-field .top-label isn't working.
@@ -96,15 +131,27 @@ section {
 
 /*        Index        */
 .index-btn {
-  margin-top: 20vh;
+  padding-top: 20vh;
   margin-bottom: 5vh; }
+  @media only screen and (min-width: 768px) {
+    .index-btn {
+      padding-top: 30vh; } }
 
 .index-vp {
   width: 100%;
-  height: 90vh; }
+  height: 95vh; }
 
 .btn-margin {
   margin-bottom: 3vh; }
+
+.keyboard_arrow_down {
+  padding-top: 25vh; }
+  @media only screen and (min-width: 768px) {
+    .keyboard_arrow_down {
+      padding-top: 35vh; } }
+  @media only screen and (min-width: 992px) {
+    .keyboard_arrow_down {
+      padding-top: 30vh; } }
 
 /*        Recipes        */
 #filters {
@@ -118,5 +165,10 @@ section {
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 10px; }
+
+/*        Data        */
+.data-heading {
+  margin-top: -20px;
+  margin-bottom: 10px; }
 
 /*# sourceMappingURL=style.css.map */
