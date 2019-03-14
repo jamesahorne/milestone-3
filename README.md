@@ -1,6 +1,7 @@
 # Subify (Sandwich Filling Recipe Site)
 This project is for Milestone 3 of Code Institutes Full Stack Development Diploma, and uses Python, Flask and MongoDB in the backend and HTML, CSS, Materialize and JavaScript in the frontend.
-Subify is a sandwich fillings recipe site, giving users the ability to read recipes and filter which recipes they see, share their recipe ideas, add ingredients and allergens to the database and edit and delete recipes. There is also a data page displaying different pieces of information about the recipes, including data on what the main ingredients and allergens used in recipes are, how many recipes are vegetarian or contain meat and the different cooking times recipes need.
+
+[Subify](https://milestone-4.herokuapp.com/) is a sandwich fillings recipe site, giving users the ability to read recipes and filter which recipes they see, share their recipe ideas, add ingredients and allergens to the database and edit and delete recipes. There is also a data page displaying different pieces of information about the recipes, including data on what the main ingredients and allergens used in recipes are, how many recipes are vegetarian or contain meat and the different cooking times recipes need.
 
 ## UX
 ### User Stories
@@ -73,29 +74,29 @@ I decided it wasn’t necessary to automate any tests, so conducted manual tests
 
 1. To test that Flask has installed and is working properly, I created a test function with a route in it that will display the text "Hello World." It worked on the browser.
 2. Add Recipe form:
-    i. Go to the Add Recipe page
-    ii.	Try to submit the correctly filled-out form
-    iii. On submission, the page is redirected to the Recipes page to find the newly added recipe at the bottom of the recipe list
+    1. Go to the Add Recipe page
+    2. Try to submit the correctly filled-out form
+    3. On submission, the page is redirected to the Recipes page to find the newly added recipe at the bottom of the recipe list
 3. Add Ingredient form (same process for Add Allergen form):
-    i. Go to the Add Recipe page and click on the Add ingredient button, which takes you to the Add Ingredient page
-    ii.	Try to submit the correctly filled-out form
-    iii. On submission, the page is redirected to the Add Recipe page.
-    iv.	Click on the Add ingredients dropdown to find the newly added ingredient at the bottom of the ingredients dropdown
+    1. Go to the Add Recipe page and click on the Add ingredient button, which takes you to the Add Ingredient page
+    2. Try to submit the correctly filled-out form
+    3. On submission, the page is redirected to the Add Recipe page.
+    4. Click on the Add ingredients dropdown to find the newly added ingredient at the bottom of the ingredients dropdown
 4. Edit Recipe form:
-    i.	Go to the full recipe page of a recipe and click on the Edit button, which takes you to the Edit Recipe page to find the current recipe detail values in the corresponding fields of the form
-    ii.	Edit some values and submit the form
-    iii.	On submission, the page is redirected to the Recipes page.
-    iv.	Click on the recipe just edited to find the new recipe details have updated
+    1. Go to the full recipe page of a recipe and click on the Edit button, which takes you to the Edit Recipe page to find the current recipe detail values in the corresponding fields of the form
+    2. Edit some values and submit the form
+    3. On submission, the page is redirected to the Recipes page.
+    4. Click on the recipe just edited to find the new recipe details have updated
 5.	Delete recipe:
-    i.	Go to the full recipe page of a recipe and click on the Delete button
-    ii.	The page is redirected to the Recipes page. The recipe just deleted has disappeared from the recipes list
+    1.	Go to the full recipe page of a recipe and click on the Delete button
+    2. The page is redirected to the Recipes page. The recipe just deleted has disappeared from the recipes list
 6.	Filter recipes form:
-    i.	Go to the Recipes page
-    ii.	Click Filter recipes button to reveal hidden filter recipes section
-    iii. Fill out as many fields in the form as you want
-    iv.	Either click the Filter button
+    1. Go to the Recipes page
+    2. Click Filter recipes button to reveal hidden filter recipes section
+    3. Fill out as many fields in the form as you want
+    4. Either click the Filter button
         1. The recipes filter down to the recipes the meet the filter criteria
-    v. Or the Reset button 
+    5. Or the Reset button 
         1. The filter recipes form resets to default values
 
 ### Browser Testing
@@ -103,8 +104,8 @@ In addition to the above manual tests, I have tested this on various browsers an
 * The buttons, which should be pink, are blue.
 * The Reset button in the filter recipes section, which only uses HTML (as no JavaScript is needed when type=reset), doesn’t work.
 
-
 ## Deployment
+The website is deployed and hosted on Heroku (https://milestone-4.herokuapp.com/).
 To deploy the website, follow the instructions below.
 1.	Add "requirements.txt" using command "sudo pip3 freeze --local > requirements.txt" and "Procfile" using "echo web: python app.py > Procfile".
 2.	Hide the environment variables (MONGO_DBNAME and MONGO_URI), by putting them in the .bashrc file. Add the same environment variable names and values into Heroku Config Vars.
