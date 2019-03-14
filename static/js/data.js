@@ -21,8 +21,8 @@ function main_ingredient(ndx) {
     var group = dim.group();
 
     dc.pieChart("#main_ingredient")
-        .width(350)
-        .height(500)
+        .width(300)
+        .height(350)
         .radius(125)
         .transitionDuration(1000)
         .dimension(dim)
@@ -36,8 +36,8 @@ function vegetarian(ndx) {
     var group = dim.group();
 
     dc.barChart("#vegetarian")
-        .width(350)
-        .height(500)
+        .width(300)
+        .height(350)
         .margins({ top: 10, right: 50, bottom: 50, left: 30 })
         .dimension(dim)
         .group(group)
@@ -63,8 +63,8 @@ function time(ndx) {
         .range([0, 1, 2, 3]);
         
     dc.rowChart("#time")
-        .width(350)
-        .height(500)
+        .width(300)
+        .height(350)
         .margins({ top: 10, right: 20, bottom: 50, left: 30 })
         .dimension(dim)
         .group(group)
@@ -81,8 +81,8 @@ function allergens(ndx) {
     var group = dim.group();
 
     dc.pieChart("#allergens")
-        .width(350)
-        .height(500)
+        .width(300)
+        .height(350)
         .radius(125)
         .transitionDuration(1000)
         .dimension(dim)
