@@ -22,11 +22,9 @@
 
 .btn,
 .btn:active,
-.btn:focus-within,
 .btn:visited,
 .btn-floating,
 .btn-floating:active,
-.btn-floating:focus-within,
 .btn-floating:visited {
   background-color: #ff4081;
   text-transform: none; }
@@ -121,9 +119,6 @@ pre {
     .section {
       min-height: 80.8vh; } }
 
-/*
-.input-field .top-label isn't working.
-*/
 .input-field .top-label {
   position: absolute;
   top: -26px;
