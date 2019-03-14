@@ -4,12 +4,12 @@ Subify is a sandwich fillings recipe site, giving users the ability to read reci
 
 ## UX
 ### User Stories
-* As a user wanting to add a recipe, on the home page I click on the Share Ideas button, which takes me to the Add Recipe page where there is a form which adds a new recipe to the database.
+* As a user wanting to add a recipe, on the Add Recipe page there is a form which adds a new recipe to the database.
 * As a user wanting to add an ingredient, when on the Add Recipe page I click on the Add ingredient button (next to the Ingredients dropdown), which takes me to the Add Ingredient page where there is a form which adds a new ingredient to the database.
 * As a user wanting to add an allergen, when on the Add Recipe page I click on the Add allergen button (next to the Allergen dropdown), which takes me to the Add Allergen page where there is a form which adds a new allergen to the database.
 * As a user wanting to edit a recipe, on the full recipe page of a recipe I click on the Edit button, which takes me to the Edit Recipe page where there is a form which replaces the current version of the recipe with the edited version to the database.
 * As a user wanting to delete a recipe, on the full recipe page of a recipe I click on the Delete button, which deletes the recipe from the database.
-* As a user wanting to view recipes, on the home page I click on the Need Ideas button, which takes me to the Recipes page where I can view all the recipes in the database.
+* As a user wanting to view recipes, on the Recipes page I can view all the recipes in the database.
 * As a user wanting to filter recipes, on the Recipes page I click on the Filter recipes button, which reveals a hidden form with categories that you can use to filter (e.g. if the recipe is vegetarian).
 
 ## Mock Ups
@@ -44,6 +44,7 @@ MongoDB data objects are stored as separate documents inside a collection. The c
 In the future, I would like to implement more features.
 * User registration and authentication – so only the user who posted the recipe can edit or delete it. This would also enable users to save their favourite recipes on their account.
 * Include ingredient amounts – ingredients are currently stored in a separate MongoDB collection as opposed to as text, meaning that ingredient amounts aren’t as easily stored.
+* Include form validation so that half-filled out forms can’t be submitted.
 
 ## Technologies Used
 * HTML
@@ -70,11 +71,35 @@ In the future, I would like to implement more features.
 
 ## Testing
 ### Manual Testing
-To test that Flask has installed and is working properly, I created a test function with a route in it that will display the text "Hello World." It worked on the browser.
+I decided it wasn’t necessary to automate any tests, so conducted manual tests.
 
+1. To test that Flask has installed and is working properly, I created a test function with a route in it that will display the text "Hello World." It worked on the browser.
+2. Add Recipe form:
+    i. Go to the Add Recipe page
+    ii.	Try to submit the correctly filled-out form
+    iii. On submission, the page is redirected to the Recipes page to find the newly added recipe at the bottom of the recipe list
+3. Add Ingredient form (same process for Add Allergen form):
+    i. Go to the Add Recipe page and click on the Add ingredient button, which takes you to the Add Ingredient page
+    ii.	Try to submit the correctly filled-out form
+    iii. On submission, the page is redirected to the Add Recipe page.
+    iv.	Click on the Add ingredients dropdown to find the newly added ingredient at the bottom of the ingredients dropdown
+4. Edit Recipe form:
+    i.	Go to the full recipe page of a recipe and click on the Edit button, which takes you to the Edit Recipe page to find the current recipe detail values in the corresponding fields of the form
+    ii.	Edit some values and submit the form
+    iii.	On submission, the page is redirected to the Recipes page.
+    iv.	Click on the recipe just edited to find the new recipe details have updated
+5.	Delete recipe:
+    i.	Go to the full recipe page of a recipe and click on the Delete button
+    ii.	The page is redirected to the Recipes page. The recipe just deleted has disappeared from the recipes list
+6.	Filter recipes form:
+    i.	Go to the Recipes page
+    ii.	Click Filter recipes button to reveal hidden filter recipes section
+    iii. Fill out as many fields in the form as you want
+    iv.	Either click the Filter button
+        1. The recipes filter down to the recipes the meet the filter criteria
+    v. Or the Reset button 
+        1. The filter recipes form resets to default values
 
-
-Add quanitities through another dropdown per ingredient? - For next version
 
 ## Credits
 Inspiration from https://ficoea-cookbook.herokuapp.com/ by Phil Surgenor.
