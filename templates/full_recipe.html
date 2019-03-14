@@ -10,14 +10,38 @@
 <div class="row">
     <div class="col s12">
         <p>{{ recipe.description }}</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col s12 m3">
         <h6>Main Ingredient</h6>
         <p>{{ recipe.main_ingredient }}</p>
+    </div>
+
+
+    <div class="col s12 m3">
         <h6>Vegetarian</h6>
         <p>{{ recipe.vegetarian }}</p>
+    </div>
+
+
+    <div class="col s12 m3">
         <h6>Serves</h6>
         <p>{{ recipe.serves }}</p>
+    </div>
+
+
+    <div class="col s12 m3">
         <h6>Total time</h6>
         <p>{{ recipe.time }}</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col s12 m3">
         <h6>Allergens</h6>
         <ul>
             {% for allergen in recipe.allergens %}
@@ -28,12 +52,22 @@
                 {% endif %}
             {% endfor %}
         </ul>
+    </div>
+    
+    
+    <div class="col s12 m3">
         <h6>Ingredients</h6>
         <ul>
             {% for ingredient in recipe.ingredients %}
             <li>{{ingredient}}{{ "," if not loop.last }}</li>
             {% endfor %}
         </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col s12">
         <h6>Method</h6>
         <pre>{{ recipe.method }}</pre>
     </div>
