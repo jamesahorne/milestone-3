@@ -1,4 +1,4 @@
-# Subify Sandwich Filling Site
+# Subify (Sandwich Filling Recipe Site)
 This project is for Milestone 3 of Code Institutes Full Stack Development Diploma, and uses Python, Flask and MongoDB in the backend and HTML, CSS, Materialize and JavaScript in the frontend.
 Subify is a sandwich fillings recipe site, giving users the ability to read recipes and filter which recipes they see, share their recipe ideas, add ingredients and allergens to the database and edit and delete recipes. There is also a data page displaying different pieces of information about the recipes, including data on what the main ingredients and allergens used in recipes are, how many recipes are vegetarian or contain meat and the different cooking times recipes need.
 
@@ -104,5 +104,17 @@ In addition to the above manual tests, I have tested this on various browsers an
 * The Reset button in the filter recipes section, which only uses HTML (as no JavaScript is needed when type=reset), doesn’t work.
 
 
+## Deployment
+To deploy the website, follow the instructions below.
+1.	Add "requirements.txt" using command "sudo pip3 freeze --local > requirements.txt" and "Procfile" using "echo web: python app.py > Procfile".
+2.	Hide the environment variables (MONGO_DBNAME and MONGO_URI), by putting them in the .bashrc file. Add the same environment variable names and values into Heroku Config Vars.
+3.	Initialise the repository and connect to Heroku in the terminal by terminal command “Heroku login” and subsequent adds, commits and pushes to Heroku.
+4.	Start scaling dynos by command “heroku ps:scale web=1”
+5.	Create environment variables IP and PORT in Heroku Config Vars
+6.	Lastly I went to the website URL and tested all links and tests recorded above to confirm there are no differences between the deployed version and the development version.
+
 ## Credits
-Inspiration from https://ficoea-cookbook.herokuapp.com/ by Phil Surgenor.
+* I received inspiration for this project from several Code Institute tutors and their feedback.
+* One Code Institute tutor gave me the idea for the scale variable (data.js: 56-63).
+* I used code from [this website](https://www.longren.io/wrapping-text-inside-pre-tags/) to wrap text inside my pre tags.
+* Inspiration from [this site](https://ficoea-cookbook.herokuapp.com/) for the Data page.
