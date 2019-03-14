@@ -1,5 +1,9 @@
 /*        General        */
 
+body {
+    min-height: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -22,11 +26,27 @@ pre {
     font-family: "Roboto", sans-serif;
     font-weight: normal;
     color: rgba(0, 0, 0, 0.87);
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
 }
 
-section {
-    min-height: 100%;
-    margin-bottom: -80px !important;
+.section {
+    min-height: 80.8vh;
+    
+    @media only screen and (min-width: $medium-break) {
+        min-height: 86.6vh;
+    }
+    
+    @media only screen and (min-width: $large-break) {
+        min-height: 89.6vh;
+    }
+    
+    @media only screen and (min-width: $x-large-break) {
+        min-height: 80.8vh;
+    }
 }
 
 
@@ -45,17 +65,33 @@ section {
 /*        Index        */
 
 .index-btn {
-    margin-top: 20vh;
+    padding-top: 20vh;
     margin-bottom: 5vh;
+    
+    @media only screen and (min-width: $medium-break) {
+        padding-top: 30vh;
+    }
 }
 
 .index-vp {
     width: 100%;
-    height: 90vh;
+    height: 95vh;
 }
 
 .btn-margin {
     margin-bottom: 3vh;
+}
+
+.keyboard_arrow_down {
+    padding-top: 25vh;
+    
+    @media only screen and (min-width: $medium-break) {
+        padding-top: 35vh;
+    }
+    
+    @media only screen and (min-width: $large-break) {
+        padding-top: 30vh;
+    }
 }
 
 
@@ -76,4 +112,12 @@ section {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 10px;
+}
+
+
+/*        Data        */
+
+.data-heading {
+    margin-top: -20px;
+    margin-bottom: 10px;
 }
