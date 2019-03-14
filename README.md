@@ -38,12 +38,34 @@ MongoDB data objects are stored as separate documents inside a collection. The c
 * Add allergen – allows users to add an allergen by filling out the form on the Add Allergen page.
 * Edit recipe – allows users to edit a recipe by clicking the Edit button on the full recipe page of a recipe and then updating the form on the Edit Recipe page.
 * Delete recipe – allows users to delete a recipe by clicking the Delete button on the full recipe page of a recipe.
-* Data filter – allows users to filter the data on the data page by clicking on a piece of data in one of the data charts, for example clicking on the Yes bar in the Vegetarian vs Meat bar chart to on see the data for vegetarian recipes.
+* Data filter – allows users to filter the data on the data page by clicking on a piece of data in one of the data charts, for example clicking on the Yes bar in the Vegetarian vs Meat bar chart to see the data for vegetarian recipes.
 
 ### Features Left to Implement
 In the future, I would like to implement more features.
 * User registration and authentication – so only the user who posted the recipe can edit or delete it. This would also enable users to save their favourite recipes on their account.
 * Include ingredient amounts – ingredients are currently stored in a separate MongoDB collection as opposed to as text, meaning that ingredient amounts aren’t as easily stored.
+
+## Technologies Used
+* HTML
+    * I have used HTML to structure my website.
+* CSS
+    * I have used CSS to style my website, based on SCSS templates I created.
+* [Materialize CSS](https://materializecss.com/)
+    * I have used Materialize for the grid system and the pre-set classes, such as the navigation and button classes.
+* JavaScript
+    * I have used JavaScript to add interactivity to the site and for the data charts in the Data page.
+* [JQuery](https://jquery.com/)
+    * I have used JQuery because it is a Materialize dependency and to simplify DOM manipulation.
+* [D3.js](https://d3js.org/), [Crossfilter](http://crossfilter.github.io/crossfilter/), [dc.js](https://dc-js.github.io/dc.js/) and [queue.js](https://caolan.github.io/async/queue.js.html)
+    * I have used these charting libraries to create and render the interactive recipe data charts on the Data page.
+* [MongoDB](https://www.mongodb.com/) and [mLab](https://mlab.com/)
+    * I have used MongoDB and mLab to store and retrieve the data.
+*  [Python](https://www.python.org/)
+    * I have used Python as the language for the back-end code.
+* [Flask](http://flask.pocoo.org/)
+    * I have used Flask as the microframework to extend Python to front end with HTML templates.
+* [Pencil](https://pencil.evolus.vn/)
+    * I have used Pencil for creating the mock-ups.
 
 
 ## Testing
