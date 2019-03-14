@@ -1,4 +1,6 @@
+
 /*        Nav        */
+
 
 .navbar-fixed {
     z-index: 999;
@@ -8,12 +10,30 @@ nav {
     background-color: #fff;
     border-bottom: $primary-color solid 2px;
     box-shadow: none;
+    height: 8vh;
+    
+    @media only screen and (min-width: $medium-break) {
+        height: 6vh;
+    }
+    
+    @media only screen and (min-width: $large-break) {
+        height: 5vh;
+        padding-left: 20px;
+    }
+    
+    @media only screen and (min-width: $x-large-break) {
+        height: 8vh;
+    }
     
     .brand-logo {
         color: $primary-color;
     }
     
     a {
+        color: $primary-color;
+    }
+    
+    ul a {
         color: $primary-color;
     }
 }
