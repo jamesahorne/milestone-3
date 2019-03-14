@@ -68,7 +68,7 @@
         <div class="collapsible-header"><i class="material-icons">expand_more</i>
             <h6>{{ recipe.recipe_name }}</h6>
         </div>
-        <div class="collapsible-body row"><span>
+        <div class="collapsible-body row">
             <h6>Description</h6>
             <p>{{ recipe.description }}</p>
             <h6>Main Ingredient</h6>
@@ -76,7 +76,7 @@
             <h6>Vegetarian</h6>
             <p>{{ recipe.vegetarian }}</p>
             <p><a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}">See full recipe</a></p>
-        </span></div>
+        </div>
     </li>
     {% endfor %}
 </ul>
