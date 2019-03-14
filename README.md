@@ -40,6 +40,11 @@ MongoDB data objects are stored as separate documents inside a collection. The c
 * Delete recipe – allows users to delete a recipe by clicking the Delete button on the full recipe page of a recipe.
 * Data filter – allows users to filter the data on the data page by clicking on a piece of data in one of the data charts, for example clicking on the Yes bar in the Vegetarian vs Meat bar chart to on see the data for vegetarian recipes.
 
+### Features Left to Implement
+In the future, I would like to implement more features.
+* User registration and authentication – so only the user who posted the recipe can edit or delete it. This would also enable users to save their favourite recipes on their account.
+* Include ingredient amounts – ingredients are currently stored in a separate MongoDB collection as opposed to as text, meaning that ingredient amounts aren’t as easily stored.
+
 
 ## Testing
 ### Manual Testing
