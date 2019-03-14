@@ -27,7 +27,7 @@
 
 
         <div class="row">
-            <div class="input-field col s12 m10">
+            <div class="input-field col s12 m6">
                 <select name="main_ingredient" required>
 
 <!--
@@ -41,7 +41,7 @@ Padding-top is different here to what it is for rows
                 <label>Main ingredient</label>
             </div>
 
-            <div class="input-field col s12 m10">
+            <div class="input-field col s12 m6">
                 <select name="vegetarian" required>
                     {% for veggie in vegetarian %}
                     <option value="{{ veggie.vegetarian }}">{{ veggie.vegetarian }}</option>
